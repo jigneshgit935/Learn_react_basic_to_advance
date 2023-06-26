@@ -1,16 +1,24 @@
+import { useState } from 'react';
 import './App.css';
+import Counter from './Counter';
 
 function App() {
-  const demo = () => {
-    alert('Hello button is clicked');
+  const [data, setData] = useState('Jignesh');
+  const updateName = () => {
+    setData('Jinu Sharma');
   };
+
+  console.log('rendr-------');
+
   return (
     <>
       <div className="App">
-        <h1>Hello World</h1>
-        <button onClick={demo}>Click me</button>
-        {/* <button onClick={() => demo()}>Click me</button> */}
-        {/* <button onClick={() => alert('Hello Event without making external function')}>Click me</button> */}
+        <h1>{data}</h1>
+
+        <button onClick={updateName}>Update name</button>
+        <br></br>
+        <br></br>
+        <Counter />
       </div>
     </>
   );
