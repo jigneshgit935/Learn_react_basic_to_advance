@@ -1,11 +1,20 @@
 import React from 'react';
 
 const UserCard = (props) => {
+  //   const { name, age, email } = props;
+
   console.log(props);
   return (
     <div>
-      <h1>Name: {props.name}</h1>
-      <h2>Age: {props.age}</h2>
+      <h1>
+        {' '}
+        Name: <br />
+        {props.name}
+      </h1>
+
+      {/* <h3>Name: {name}</h3>
+      <p>Age: {age}</p>
+      <p>Email: {email}</p> */}
     </div>
   );
 };
