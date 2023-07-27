@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import Form from './Form';
+import Profile from './Profile';
+
 const App = () => {
   return (
     <div className="App">
-      <h1>Form and Handling</h1>
+      <h1>Conditional Rendering</h1>
 
-      <Form />
+      <Profile />
     </div>
   );
 };
