@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
 const App = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [inputValueShow, setInputValueHide] = useState(false);
+  const [status, setStatus] = useState(false);
 
-  const handleChange = (event) => {
-    console.log(event.target.value);
-    setInputValue(event.target.value);
-    setInputValueHide(false);
-  };
   return (
     <div className="App">
-      <h1>Get Input Box Value</h1>
+      <h1>Hide and Toggle</h1>
+      {status ? <div className="status">Content</div> : ''}
 
-      <h3>{inputValueShow ? inputValue : ''}</h3>
-      <input type="text" onChange={handleChange} />
-      <button onClick={() => setInputValueHide(true)}>Submit</button>
+      <button onClick={() => setStatus(false)}>hide</button>
+      <button onClick={() => setStatus(true)}>Show</button>
+
+      {/* Using only one button */}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <button onClick={() => setStatus(!status)}>toggle</button>
     </div>
   );
 };
