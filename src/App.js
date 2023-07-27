@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import Profile from './Profile';
+import FormValidation from './FormVali';
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Conditional Rendering</h1>
+      <h1>Form Validation</h1>
 
-      <Profile />
+      <FormValidation />
     </div>
   );
 };
