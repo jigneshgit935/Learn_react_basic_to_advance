@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import UserList from './UserList';
-export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'Jignesh Sharma',
-    };
-  }
+const App = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [inputValueShow, setInputValueHide] = useState(false);
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Class Component Props</h1>
-        {/* <UserList name="jinu" email="jinu@gmail.com" /> */}
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setInputValue(event.target.value);
+    setInputValueHide(false);
+  };
+  return (
+    <div className="App">
+      <h1>Get Input Box Value</h1>
 
-        {/* Exmaple 2 */}
-        <UserList name={this.state.name} email="jinu@gmail.com" />
-        <button
-          onClick={() => this.setState({ name: 'Name is Sharma jignesh' })}
-        >
-          Update
-        </button>
-      </div>
-    );
-  }
-}
+      <h3>{inputValueShow ? inputValue : ''}</h3>
+      <input type="text" onChange={handleChange} />
+      <button onClick={() => setInputValueHide(true)}>Submit</button>
+    </div>
+  );
+};
 
 export default App;
