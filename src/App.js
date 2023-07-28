@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import RenderMethod from './RenderMethod';
 
-class App extends Component {
-  // example1
-  constructor() {
-    super();
-    console.log('Contructor is called');
-  }
-  render() {
-    console.log('Render is called');
-    return (
-      <div className="App">
-        <h1>React LifeCycle</h1>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [name, setName] = useState('Jignesh');
+  return (
+    <div className="App">
+      <h1>React Render Life</h1>
+
+      <RenderMethod name={name} />
+
+      {/* example 2 */}
+      <button onClick={() => setName('Jignesh Sharma')}> Update Name </button>
+    </div>
+  );
+};
 
 export default App;
