@@ -4,40 +4,31 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
-      name: 'jingesh',
       count: 0,
     };
     console.log('Constructor called');
   }
-  // example1
 
-  componentDidUpdate(prevProps, prevState) {
-    // example1
-    if ((this.state.count, prevState.count)) {
-      alert('working');
-      console.log('Component Did update', prevState.count, this.state.count);
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('Should Component Update', this.state.count);
+
+    if (nextState.count < 5) {
+      return true;
     }
+    return false;
   }
-
   render() {
     console.log('render');
     return (
       <div className="App">
-        <h1>React Component Did Update</h1>
+        <h1>React Component Should Update</h1>
 
-        {/* example2 */}
-        <h3>{this.state.name}</h3>
+        {/* example1 */}
 
-        <button onClick={() => this.setState({ name: 'Jignesh Sharma' })}>
-          UpdateState
-        </button>
-
-        {/* example 3 */}
-        <h6>{this.state.count}</h6>
+        <h3>{this.state.count}</h3>
         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-          Upsate Button
+          UpdateState
         </button>
       </div>
     );
