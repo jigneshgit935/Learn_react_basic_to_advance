@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import Unmount from './Unmount';
+const App = () => {
+  const [count, setCount] = useState(0);
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: true,
-    };
-  }
+  useEffect(() => {
+    // alert('useEffect Hooks');
+    console.log('useEffect Hooks');
 
-  render() {
-    console.log('clicked', this.state.show);
-    return (
-      <div className="App">
-        <h1>React Component Will Unmount</h1>
-        {this.state.show ? <Unmount /> : <h2>Set Interval Removed</h2>}
-        {/* example 2 */}
-        <button onClick={() => this.setState({ show: !this.state.show })}>
-          Removed cop
-        </button>
-      </div>
-    );
-  }
-}
+    console.log('Updating');
+  });
+  return (
+    <div className="App">
+      <h1>useEffect</h1>
+
+      <br />
+      <br />
+      <h2>Count : {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Update Count</button>
+    </div>
+  );
+};
 
 export default App;
