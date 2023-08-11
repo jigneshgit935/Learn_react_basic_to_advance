@@ -1,35 +1,36 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import ChildComponent from './ChildComponent';
-import ComponentB from './ComponentB';
-
-// children to parent data shared
-const App = () => {
+import CounterPureComponent from './CounterPureComponent';
+class App extends Component {
   // example 1
-  const [sharedData, setSharedData] = useState('');
 
-  const handleChange = (newValue) => {
-    console.log(newValue);
-    setSharedData(newValue);
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  // example 1
+  handleIncrement = () => {
+    this.setState((prevState) => ({
+      count: prevState.count + 1,
+    }));
   };
+  render() {
+    console.log('Parent Renedered!');
 
-  // example 2
-  const parent = (data) => {
-    alert(data.name);
-    console.log(data);
-  };
-  return (
-    <div className="App">
-      <h1>React Lifting State Up</h1>
+    return (
+      <div className="App">
+        <h1>Pure Component</h1>
 
-      <br />
-      <br />
-      <br />
-
-      <ChildComponent sharedData={sharedData} handleChange={handleChange} />
-      <ComponentB sharedData={sharedData} alert={parent} />
-    </div>
-  );
-};
+        <CounterPureComponent
+          count={this.state.count}
+          onIncrement={this.handleIncrement}
+        />
+      </div>
+    );
+  }
+}
 
 export default App;
