@@ -1,36 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import CounterPureComponent from './CounterPureComponent';
-class App extends Component {
+import ChildComponent from './ChildComponent';
+const App = () => {
   // example 1
+  const [count, setCount] = useState(0);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-  }
+  // examplw 1
+  console.log('parent rendered');
+  return (
+    <div className="App">
+      <h2>Memo</h2>
 
-  // example 1
-  handleIncrement = () => {
-    this.setState((prevState) => ({
-      count: prevState.count + 1,
-    }));
-  };
-  render() {
-    console.log('Parent Renedered!');
+      <ChildComponent count={count} />
 
-    return (
-      <div className="App">
-        <h1>Pure Component</h1>
-
-        <CounterPureComponent
-          count={this.state.count}
-          onIncrement={this.handleIncrement}
-        />
-      </div>
-    );
-  }
-}
+      <h2>Count : {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Count+</button>
+    </div>
+  );
+};
 
 export default App;
