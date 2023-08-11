@@ -1,56 +1,82 @@
 import React from 'react';
 import './App.css';
-import { Table } from 'react-bootstrap';
+import { Col, Container, Row, Table } from 'react-bootstrap';
 const App = () => {
-  const tableData = [
+  const countriesWithCities = [
     {
-      id: 1,
-      name: 'Jignesh Sharma',
-      age: 25,
-      location: 'Udaipur',
+      country: 'USA',
+      cities: ['New York', 'Los Angeles', 'Chicago'],
     },
     {
-      id: 2,
-      name: 'Kailash Sen',
-      age: 25,
-      location: 'Utharda',
+      country: 'Canada',
+      cities: ['Toronto', 'Vancouver', 'Montreal'],
     },
     {
-      id: 3,
-      name: 'Sunil Rawat',
-      age: 30,
-      location: 'Mumbai',
+      country: 'UK',
+      cities: ['London', 'Manchester', 'Birmingham'],
     },
   ];
 
+  // example 2
+  const nestedData = [
+    {
+      category: 'Fruits',
+      items: ['Apple', 'Banana', 'Mango'],
+    },
+    {
+      category: 'Vegetables',
+      items: ['Carrot', 'Brocolli', 'Spinach'],
+    },
+    {
+      category: 'Drinks',
+      items: ['Water', 'Juice', 'Tea', 'Coffe'],
+    },
+  ];
   return (
     <div className="App">
-      <h1>React bootstrap</h1>
-
-      <div>
-        <Table variant="dark" responsive border={5} hover>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((data) =>
-              data.age === 25 ? (
-                <tr key={data.id}>
-                  <td>{data.id}</td>
-                  <td>{data.name}</td>
-                  <td>{data.age}</td>
-                  <td>{data.location}</td>
+      Nested Map Function
+      {/* exampe 1 */}
+      <ul>
+        {countriesWithCities.map((countryObj, index) => (
+          <li key={index}>
+            <b>{countryObj.country}</b>
+            <ul>
+              {countryObj.cities.map((city, cityIndex) => (
+                <li key={cityIndex}>{city}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+      {/* example 2 */}
+      <Container>
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <Table className="table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Items</th>
                 </tr>
-              ) : null
-            )}
-          </tbody>
-        </Table>
-      </div>
+              </thead>
+              <tbody>
+                {nestedData.map((data, index) => (
+                  <tr key={index}>
+                    <td>{data.category}</td>
+                    <td>
+                      <ul className="list-unstyled">
+                        {data.items.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
